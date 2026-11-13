@@ -5,8 +5,8 @@ from __future__ import annotations
 from datetime import datetime, timedelta, timezone
 from typing import Any
 
-from core.sec_client import resolve_cik, company_submissions, get_text
-from core.risk_rules import classify_form4_transactions
+from ..core.sec_client import resolve_cik, company_submissions, get_text
+from ..core.risk_rules import classify_form4_transactions
 
 
 def analyze_insider_activity(ticker: str, lookback_days: int = 90, max_filings: int = 20) -> dict[str, Any]:

@@ -5,8 +5,8 @@ from __future__ import annotations
 from datetime import datetime, timedelta, timezone
 from typing import Any
 
-from core.sec_client import resolve_cik, company_submissions
-from core.risk_rules import score_8k_items, EIGHT_K_RISK_ITEMS
+from ..core.sec_client import resolve_cik, company_submissions
+from ..core.risk_rules import score_8k_items, EIGHT_K_RISK_ITEMS
 
 
 def analyze_8k_risk(ticker: str, lookback_days: int = 180) -> dict[str, Any]:

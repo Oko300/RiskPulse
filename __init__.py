@@ -8,8 +8,8 @@ from __future__ import annotations
 import json
 from typing import Any
 
-from tools.eight_k import analyze_8k_risk
-from tools.insider import analyze_insider_activity
+from .tools.eight_k import analyze_8k_risk
+from .tools.insider import analyze_insider_activity
 
 
 def register(ctx):

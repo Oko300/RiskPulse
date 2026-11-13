@@ -8,8 +8,6 @@ from typing import Any, Optional
 
 import httpx
 
-DEFAULT_UA = "RiskPulse/0.1 (success; 300joh@.com)"
-
 _MIN_INTERVAL = 0.15
 _last_request = 0.0
 
@@ -78,7 +76,15 @@ _FALLBACK_TICKERS: dict[str, str] = {
 
 def _get_user_agent() -> str:
     ua = os.environ.get("SEC_EDGAR_USER_AGENT", "").strip()
-    return ua or DEFAULT_UA
+    if not ua:
+        raise RuntimeError(
+            "SEC_EDGAR_USER_AGENT is not set. "
+            "SEC EDGAR requires a descriptive User-Agent that identifies the requester "
+            "with a real contact email. "
+            "Set it before using RiskPulse, e.g.:\n"
+            '  export SEC_EDGAR_USER_AGENT="Your Name or Company (you@example.com)"'
+        )
+    return ua
 
 
 def _rate_limit() -> None:
